@@ -21,6 +21,7 @@ include_recipe "php"
 
 package "php-mbstring"
 package "php-xml"
+package "php-pecl-xdebug"
 package "ImageMagick"
 package "ImageMagick-devel"
 
