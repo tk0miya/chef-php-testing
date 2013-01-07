@@ -22,9 +22,20 @@ include_recipe "php"
 
 package "php53-mbstring"
 package "php53-xml"
-package "php-pecl-xdebug"
 package "ImageMagick"
 package "ImageMagick-devel"
+
+# xdebug
+php_pear "xdebug" do
+  action :install
+end
+
+cookbook_file "/etc/php.d/xdebug.ini" do
+  source "xdebug.ini"
+  mode 0644
+  owner "root"
+  group "root"
+end
 
 # phing
 php_pear_channel "pear.phing.info" do
