@@ -17,10 +17,11 @@
 # limitations under the License.
 #
 
+include_recipe "yum::epel"
 include_recipe "php"
 
-package "php-mbstring"
-package "php-xml"
+package "php53-mbstring"
+package "php53-xml"
 package "php-pecl-xdebug"
 package "ImageMagick"
 package "ImageMagick-devel"
