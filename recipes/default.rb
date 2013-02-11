@@ -37,9 +37,13 @@ cookbook_file "/etc/php.d/xdebug.ini" do
   group "root"
 end
 
-# phing
-php_pear_channel "pear.phing.info" do
-  action :discover
+# pear channels
+channels = %w(pear.phing.info pear.pdepend.org pear.phpmd.org pear.phpunit.de
+              components.ez.no pear.symfony.com pear.netpirates.net)
+channels.each do |channel|
+  php_pear_channel channel do
+    action :discover
+  end
 end
 
 php_pear "phing" do
@@ -47,19 +51,9 @@ php_pear "phing" do
   channel "phing"
 end
 
-# PHP_Depend
-php_pear_channel "pear.pdepend.org" do
-  action :discover
-end
-
 php_pear "PHP_Depend" do
   action :install
   channel "pdepend"
-end
-
-# PHP_PMD
-php_pear_channel "pear.phpmd.org" do
-  action :discover
 end
 
 php_pear "PHP_PMD" do
@@ -67,28 +61,10 @@ php_pear "PHP_PMD" do
   channel "phpmd"
 end
 
-# PHPUnit
-php_pear_channel "pear.phpunit.de" do
-  action :discover
-end
-
-php_pear_channel "components.ez.no" do
-  action :discover
-end
-
-php_pear_channel "pear.symfony.com" do
-  action :discover
-end
-
 php_pear "PHPUnit" do
   action :install
   channel "phpunit"
   options "--alldeps"
-end
-
-# phpcpd
-php_pear_channel "pear.netpirates.net" do
-  action :discover
 end
 
 php_pear "phpcpd" do
