@@ -20,8 +20,13 @@
 include_recipe "yum::epel"
 include_recipe "php"
 
-package "php53-mbstring"
-package "php53-xml"
+if node['platform_version'] =~ /^6/
+  package "php-mbstring"
+  package "php-xml"
+else
+  package "php53-mbstring"
+  package "php53-xml"
+end
 package "ImageMagick"
 package "ImageMagick-devel"
 
