@@ -44,16 +44,11 @@ end
 
 # pear channels
 channels = %w(pear.phing.info pear.pdepend.org pear.phpmd.org pear.phpunit.de
-              components.ez.no pear.symfony.com pear.netpirates.net)
+              components.ez.no pear.symfony.com pear.netpirates.net pear.phpdoc.org)
 channels.each do |channel|
   php_pear_channel channel do
     action :discover
   end
-end
-
-php_pear "phing" do
-  action :install
-  channel "phing"
 end
 
 php_pear "PHP_Depend" do
@@ -75,4 +70,9 @@ end
 php_pear "phpcpd" do
   action :install
   channel "phpunit"
+end
+
+php_pear "phing" do
+  action :install
+  channel "phing"
 end
